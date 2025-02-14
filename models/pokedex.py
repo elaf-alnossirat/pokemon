@@ -2,33 +2,33 @@ import json
 import os
 
 class Pokedex:
-    def __init__(self, fichier='data/pokedex.json'):
-        self.fichier = fichier
-        self.pokemon_captures = []
-        self.charger()
+    def __init__(self, file_path='data/pokedex.json'):
+        self.file_path = file_path
+        self.captured_pokemon = []
+        self.load()
 
-    def ajouter_pokemon(self, pokemon):
-        # Vérifier les doublons par nom
-        if not any(p.nom == pokemon.nom for p in self.pokemon_captures):
-            self.pokemon_captures.append(pokemon)
-            self.sauvegarder()
+    def add_pokemon(self, pokemon):
+        # Check for duplicates by name
+        if not any(p.name == pokemon.name for p in self.captured_pokemon):
+            self.captured_pokemon.append(pokemon)
+            self.save()
 
-    def charger(self):
-        if os.path.exists(self.fichier):
-            with open(self.fichier, 'r') as f:
+    def load(self):
+        if os.path.exists(self.file_path):
+            with open(self.file_path, 'r') as f:
                 data = json.load(f)
-                self.pokemon_captures = [
+                self.captured_pokemon = [
                     Pokemon.from_dict(pokemon_data) 
                     for pokemon_data in data
                 ]
 
-    def sauvegarder(self):
-        with open(self.fichier, 'w') as f:
+    def save(self):
+        with open(self.file_path, 'w') as f:
             json.dump([
                 pokemon.to_dict() 
-                for pokemon in self.pokemon_captures
+                for pokemon in self.captured_pokemon
             ], f, indent=4)
 
-    def afficher_pokemon(self):
-        for pokemon in self.pokemon_captures:
-            print(f"{pokemon.nom} (Niveau {pokemon.niveau})")
+    def display_pokemon(self):
+        for pokemon in self.captured_pokemon:
+            print(f"{pokemon.name} (Level {pokemon.level})")

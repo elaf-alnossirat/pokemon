@@ -3,78 +3,78 @@ import json
 
 class Pokemon:
     TYPES = [
-        'Normal', 'Feu', 'Eau', 'Plante', 'Électrique', 
-        'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 
-        'Psy', 'Insecte', 'Roche', 'Spectre', 'Dragon', 
-        'Ténèbres', 'Acier', 'Fée'
+        'Normal', 'Fire', 'Water', 'Grass', 'Electric', 
+        'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 
+        'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 
+        'Dark', 'Steel', 'Fairy'
     ]
 
     TYPE_EFFECTIVENESS = {
-        "Normal": {"Roche": 0.5, "Spectre": 0, "Acier": 0.5},
-        "Feu": {"Feu": 0.5, "Eau": 0.5, "Plante": 2, "Glace": 2, "Insecte": 2, "Roche": 0.5, "Dragon": 0.5, "Acier": 2},
-        "Eau": {"Feu": 2, "Eau": 0.5, "Plante": 0.5, "Sol": 2, "Roche": 2, "Dragon": 0.5},
-        "Électrique": {"Eau": 2, "Électrique": 0.5, "Plante": 0.5, "Sol": 0, "Vol": 2, "Dragon": 0.5},
-        "Plante": {"Feu": 0.5, "Eau": 2, "Plante": 0.5, "Poison": 0.5, "Sol": 2, "Vol": 0.5, "Insecte": 0.5, "Roche": 2, "Dragon": 0.5, "Acier": 0.5},
-        "Glace": {"Feu": 0.5, "Eau": 0.5, "Glace": 0.5, "Plante": 2, "Sol": 2, "Vol": 2, "Dragon": 2, "Acier": 0.5},
-        "Combat": {"Normal": 2, "Glace": 2, "Roche": 2, "Ténèbres": 2, "Acier": 2, "Poison": 0.5, "Vol": 0.5, "Psy": 0.5, "Insecte": 0.5, "Fée": 0.5, "Spectre": 0},
-        "Poison": {"Plante": 2, "Fée": 2, "Poison": 0.5, "Sol": 0.5, "Roche": 0.5, "Spectre": 0.5, "Acier": 0},
-        "Sol": {"Feu": 2, "Électrique": 2, "Plante": 0.5, "Poison": 2, "Vol": 0, "Insecte": 0.5, "Roche": 2, "Acier": 2},
-        "Vol": {"Électrique": 0.5, "Combat": 2, "Plante": 2, "Insecte": 2, "Roche": 0.5, "Acier": 0.5},
-        "Psy": {"Combat": 2, "Poison": 2, "Psy": 0.5, "Ténèbres": 0, "Acier": 0.5},
-        "Insecte": {"Feu": 0.5, "Plante": 2, "Combat": 0.5, "Poison": 0.5, "Vol": 0.5, "Psy": 2, "Spectre": 0.5, "Ténèbres": 2, "Acier": 0.5, "Fée": 0.5},
-        "Roche": {"Feu": 2, "Glace": 2, "Combat": 0.5, "Sol": 0.5, "Vol": 2, "Insecte": 2, "Acier": 0.5},
-        "Spectre": {"Normal": 0, "Psy": 2, "Spectre": 2, "Ténèbres": 0.5},
-        "Dragon": {"Dragon": 2, "Acier": 0.5, "Fée": 0},
-        "Ténèbres": {"Combat": 0.5, "Psy": 2, "Spectre": 2, "Ténèbres": 0.5, "Fée": 0.5},
-        "Acier": {"Feu": 0.5, "Eau": 0.5, "Électrique": 0.5, "Glace": 2, "Roche": 2, "Acier": 0.5, "Fée": 2},
-        "Fée": {"Combat": 2, "Dragon": 2, "Ténèbres": 2, "Feu": 0.5, "Poison": 0.5, "Acier": 0.5}
+        "Normal": {"Rock": 0.5, "Ghost": 0, "Steel": 0.5},
+        "Fire": {"Fire": 0.5, "Water": 0.5, "Grass": 2, "Ice": 2, "Bug": 2, "Rock": 0.5, "Dragon": 0.5, "Steel": 2},
+        "Water": {"Fire": 2, "Water": 0.5, "Grass": 0.5, "Ground": 2, "Rock": 2, "Dragon": 0.5},
+        "Electric": {"Water": 2, "Electric": 0.5, "Grass": 0.5, "Ground": 0, "Flying": 2, "Dragon": 0.5},
+        "Grass": {"Fire": 0.5, "Water": 2, "Grass": 0.5, "Poison": 0.5, "Ground": 2, "Flying": 0.5, "Bug": 0.5, "Rock": 2, "Dragon": 0.5, "Steel": 0.5},
+        "Ice": {"Fire": 0.5, "Water": 0.5, "Ice": 0.5, "Grass": 2, "Ground": 2, "Flying": 2, "Dragon": 2, "Steel": 0.5},
+        "Fighting": {"Normal": 2, "Ice": 2, "Rock": 2, "Dark": 2, "Steel": 2, "Poison": 0.5, "Flying": 0.5, "Psychic": 0.5, "Bug": 0.5, "Fairy": 0.5, "Ghost": 0},
+        "Poison": {"Grass": 2, "Fairy": 2, "Poison": 0.5, "Ground": 0.5, "Rock": 0.5, "Ghost": 0.5, "Steel": 0},
+        "Ground": {"Fire": 2, "Electric": 2, "Grass": 0.5, "Poison": 2, "Flying": 0, "Bug": 0.5, "Rock": 2, "Steel": 2},
+        "Flying": {"Electric": 0.5, "Fighting": 2, "Grass": 2, "Bug": 2, "Rock": 0.5, "Steel": 0.5},
+        "Psychic": {"Fighting": 2, "Poison": 2, "Psychic": 0.5, "Dark": 0, "Steel": 0.5},
+        "Bug": {"Fire": 0.5, "Grass": 2, "Fighting": 0.5, "Poison": 0.5, "Flying": 0.5, "Psychic": 2, "Ghost": 0.5, "Dark": 2, "Steel": 0.5, "Fairy": 0.5},
+        "Rock": {"Fire": 2, "Ice": 2, "Fighting": 0.5, "Ground": 0.5, "Flying": 2, "Bug": 2, "Steel": 0.5},
+        "Ghost": {"Normal": 0, "Psychic": 2, "Ghost": 2, "Dark": 0.5},
+        "Dragon": {"Dragon": 2, "Steel": 0.5, "Fairy": 0},
+        "Dark": {"Fighting": 0.5, "Psychic": 2, "Ghost": 2, "Dark": 0.5, "Fairy": 0.5},
+        "Steel": {"Fire": 0.5, "Water": 0.5, "Electric": 0.5, "Ice": 2, "Rock": 2, "Steel": 0.5, "Fairy": 2},
+        "Fairy": {"Fighting": 2, "Dragon": 2, "Dark": 2, "Fire": 0.5, "Poison": 0.5, "Steel": 0.5}
     }
 
-    def __init__(self, nom, type_pokemon, pv, attaque, defense, niveau=1):
-        self.nom = nom
-        self.type_pokemon = type_pokemon
-        self.pv_max = pv
-        self.pv_actuels = pv
-        self.attaque = attaque
+    def __init__(self, name, pokemon_type, hp, attack, defense, level=1):
+        self.name = name
+        self.pokemon_type = pokemon_type
+        self.max_hp = hp
+        self.current_hp = hp
+        self.attack = attack
         self.defense = defense
-        self.niveau = niveau
+        self.level = level
 
-    def attaquer(self, adversaire):
-        degats_base = self.attaque
-        multiplicateur = self.TYPE_EFFECTIVENESS.get(self.type_pokemon, {}).get(adversaire.type_pokemon, 1)
-        degats_finaux = degats_base * multiplicateur
+    def attack_opponent(self, opponent):
+        base_damage = self.attack
+        multiplier = self.TYPE_EFFECTIVENESS.get(self.pokemon_type, {}).get(opponent.pokemon_type, 1)
+        final_damage = base_damage * multiplier
         
         if random.random() < 0.1:
-            return 0  # L'attaque échoue
+            return 0  # The attack misses
         
-        degats_apres_defense = max(1, degats_finaux - adversaire.defense)  # Dégâts minimum de 1
-        adversaire.pv_actuels = max(0, adversaire.pv_actuels - degats_apres_defense)
+        damage_after_defense = max(1, final_damage - opponent.defense)  # Minimum damage of 1
+        opponent.current_hp = max(0, opponent.current_hp - damage_after_defense)
         
-        return degats_apres_defense
+        return damage_after_defense
 
-    def est_ko(self):
-        return self.pv_actuels <= 0
+    def is_knocked_out(self):
+        return self.current_hp <= 0
 
-    def guerir(self):
-        self.pv_actuels = self.pv_max
+    def heal(self):
+        self.current_hp = self.max_hp
 
     def to_dict(self):
         return {
-            "nom": self.nom,
-            "type": self.type_pokemon,
-            "pv": self.pv_max,
-            "attaque": self.attaque,
+            "name": self.name,
+            "type": self.pokemon_type,
+            "hp": self.max_hp,
+            "attack": self.attack,
             "defense": self.defense,
-            "niveau": self.niveau
+            "level": self.level
         }
 
     @classmethod
     def from_dict(cls, data):
         return cls(
-            nom=data['nom'],
-            type_pokemon=data['type'],
-            pv=data['pv'],
-            attaque=data['attaque'],
+            name=data['name'],
+            pokemon_type=data['type'],
+            hp=data['hp'],
+            attack=data['attack'],
             defense=data['defense'],
-            niveau=data.get('niveau', 1)
+            level=data.get('level', 1)
         )
