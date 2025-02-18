@@ -88,6 +88,7 @@ class PokemonInterface:
             ("Quit", (900, 50))
         ]
         
+        
         while True:
             self.screen.fill(self.WHITE)
             background_surface = self.read_video_frame()
@@ -131,3 +132,7 @@ class PokemonInterface:
 if __name__ == "__main__":
     game = PokemonInterface()
     game.start()
+
+
+
+
