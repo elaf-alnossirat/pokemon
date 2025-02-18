@@ -1,0 +1,16 @@
+{
+  "pokemon_captures": [
+      {
+          "nom": "Pikachu",
+          "date_capture": "2024-02-10",
+          "niveau_capture": 5,
+          "niveau_actuel": 7,
+          "nombre_combats": 3
+      }
+  ],
+  "statistiques_globales": {
+      "total_pokemon_captures": 1,
+      "types_captures": ["Électrique"],
+      "niveau_moyen": 7
+  }
+}
